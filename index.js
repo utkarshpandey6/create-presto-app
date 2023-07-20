@@ -1,8 +1,9 @@
+#! /usr/bin/env node
 const { resolve } = require("node:path")
 var fs = require('fs');
 const fse = require('fs-extra');
 const { argv, cwd, stdout, stderr } = require("node:process");
-const { exec } = require('node:child_process');
+const { exec, spawn } = require('node:child_process');
 
 const relativePath = argv[2]
 const absolutePath = resolve(cwd(), relativePath);
@@ -26,16 +27,26 @@ exec(`cd ${destDir} && git init`, (error, stdout, stderr) => {
     return;
   }
   console.log(stdout);
-  console.log("Setting up npm for you....");
-  exec(`cd ${destDir} && npm install`, (error, stdout, stderr) => {
-    if(error) {
-      console.log(stderr);
-      return;
-    }
-    console.log(stdout);
-    console.log("Go inside you app directory");
-    console.log("Run command \"npm run watch:purs && npm run dev\"");
+  console.log("Initiatlizing npm...");
+
+  const npmInit = spawn(`npm`, ['install', '--prefix', destDir]);
+
+  npmInit.stdout.on("data", data => {
+    console.log(`${data}`);
   });
+
+  npmInit.stderr.on("data", data => {
+      console.log(`${data}`);
+  });
+
+  npmInit.on('error', (error) => {
+      console.log(`${error.message}`);
+  });
+
+  npmInit.on("close", code => {
+      console.log(`child process exited with code ${code}`);
+  });
+
 });
 
 

@@ -9,17 +9,18 @@
   "dependencies": {
     "core-js": "^3.13.0",
     "esbuild": "^0.17.19",
-    "presto-ui": "git+ssh://git@ssh.bitbucket.juspay.net:picaf/presto-ui.git#v1.5.6",
-    "purescript": "^0.15.3"
+    "presto-ui": "git+ssh://git@ssh.bitbucket.juspay.net:picaf/presto-ui.git#v1.5.6"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "spago": "^0.21.0",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "babel-loader": "^8.2.2",
     "babel-types": "^6.26.0",
+    "concurrently": "^8.2.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "purescript": "^0.15.10",
+    "purs-loader": "^4.0.0",
+    "spago": "^0.21.0",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^4.15.1"

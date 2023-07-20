@@ -1,0 +1,7 @@
+/dist/
+/output/
+/node_modules/
+/.spago/
+.DS_Store
+.psc-ide-port
+package-lock.json
