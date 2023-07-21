@@ -1,6 +1,6 @@
 {
   "name": "create-presto-app",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Setup your project for creating web apps using presto dom framework",
   "main": "index.js",
   "dependencies": {

@@ -21,6 +21,23 @@ try {
   console.error("Failed to create folder structure", err)
 }
 
+const ignoreFiles = ['/dist/',
+'/output/',
+'/node_modules/',
+'/.spago/',
+'.DS_Store',
+'.psc-ide-port',
+'package-lock.json']
+
+
+ignoreFiles.forEach((x) => {
+  exec(`cd ${destDir} && echo ${x} >> .gitignore`, (error, stdout, stderr) => {
+
+  })
+})
+
+
+
 exec(`cd ${destDir} && git init`, (error, stdout, stderr) => {
   if(error) {
     console.log(stderr);
